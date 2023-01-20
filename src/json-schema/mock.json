@@ -1,0 +1,33 @@
+{
+	"items": [],
+	"buyer": {
+		"adress": {
+			"num": "",
+			"numSuffix": "",
+			"city": "",
+			"street": "",
+			"postCode": ""
+		},
+		"name": "",
+		"vatNumber": ""
+	},
+	"entreprise": {
+		"phone": "",
+		"email": "",
+		"adress": {
+			"num": "",
+			"numSuffix": "",
+			"city": "",
+			"street": "",
+			"postCode": ""
+		},
+		"name": "",
+		"vatNumber": ""
+	},
+	"title": "",
+	"date": "",
+	"duration": 0,
+	"logoURL": "",
+	"duePercentage": 0,
+	"structuredCommunication": ""
+}

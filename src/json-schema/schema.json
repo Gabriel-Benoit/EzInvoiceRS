@@ -1,0 +1,118 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "Adress": {
+            "properties": {
+                "city": {
+                    "type": "string"
+                },
+                "num": {
+                    "type": "string"
+                },
+                "numSuffix": {
+                    "type": "string"
+                },
+                "postCode": {
+                    "type": "string"
+                },
+                "street": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Entity": {
+            "properties": {
+                "adress": {
+                    "$ref": "#/definitions/Adress"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "vatNumber": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Entreprise": {
+            "properties": {
+                "adress": {
+                    "$ref": "#/definitions/Adress"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "vatNumber": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Item": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "intra": {
+                    "type": "boolean"
+                },
+                "priceHT": {
+                    "type": "number"
+                },
+                "qt": {
+                    "type": "number"
+                },
+                "vat": {
+                    "enum": [
+                        "12.0",
+                        "21.0",
+                        "6.0"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "properties": {
+        "buyer": {
+            "$ref": "#/definitions/Entity"
+        },
+        "date": {
+            "type": "string"
+        },
+        "duePercentage": {
+            "type": "number"
+        },
+        "duration": {
+            "type": "number"
+        },
+        "entreprise": {
+            "$ref": "#/definitions/Entreprise"
+        },
+        "items": {
+            "items": {
+                "$ref": "#/definitions/Item"
+            },
+            "type": "array"
+        },
+        "logoURL": {
+            "type": "string"
+        },
+        "structuredCommunication": {
+            "type": "string"
+        },
+        "title": {
+            "type": "string"
+        }
+    },
+    "type": "object"
+}
+
