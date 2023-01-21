@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap');
+body {
+    background-size: 21cm 29.7cm;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10pt;
+    font-weight: 300;
+    text-align: justify;
+    margin: 0;
+}
+h3 {
+    margin: 0;
+    padding: 0;
+}
+#invoice-header-info {
+    text-align: right;
+    font-size: 9pt;
+    line-height: 1.5;
+}
+#invoice-from-to {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 8pt;
+    line-height: 1.65;
+    font-weight: 400;
+    margin-bottom: 1.6cm;
+}
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 0;
+        margin: 1.4cm;
+        margin-top: 1.38cm;
+        margin-bottom: 2.3cm;
+    }
+    header {
+        top: 0;
+        height: 3.7cm;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .header-space {
+        height: 3.4cm;
+    }
+    .footer-space {
+        height: 3.4cm;
+    }
+    header img {
+        height: 2cm;
+    }
+    .pagebreak {
+        page-break-before: always;
+    }
+    header,
+    footer {
+        position: fixed;
+        width: 100%;
+    }
+    footer {
+        bottom: 0;
+    }
+}
+.table {
+    position: relative;
+    border-collapse: collapse;
+    width: 100vw;
+}
+.table td,
+.table th {
+    border: 0.01cm solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    max-width: 50vw;
+}
+.table td.hidden {
+    background-color: white;
+    border: none;
+}
+.table tr:nth-child(even) {
+    background-color: #eee;
+}
+footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 9pt;
+    line-height: 1.8;
+    border-top: 0.01cm solid #eee;
+    padding-top: 0.5cm;
+}
+
