@@ -5,10 +5,10 @@ pub mod types;
 pub use types::*;
 #[derive(Properties, PartialEq, Default)]
 pub struct AppProps {
-    data: Option<InvoiceData>,
+    data: Option<InvoiceDataJson>,
 }
 
-pub async fn render_to_str(data: InvoiceData) -> Result<String, Box<dyn std::error::Error>> {
+pub async fn render_to_str(data: InvoiceDataJson) -> Result<String, Box<dyn std::error::Error>> {
     let mut result = String::new();
     let renderer = yew::ServerRenderer::<App>::with_props(|| props!(AppProps { data: Some(data) }));
     renderer.render_to_string(&mut result).await;
@@ -19,7 +19,7 @@ pub async fn render_to_str(data: InvoiceData) -> Result<String, Box<dyn std::err
 #[function_component(App)]
 pub fn app(props: &AppProps) -> Html {
     let AppProps { data } = props;
-    let InvoiceData {
+    let InvoiceDataJson {
         buyer,
         date,
         due_percentage,

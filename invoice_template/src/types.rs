@@ -11,7 +11,6 @@ pub struct Adress {
     pub post_code: String,
     pub street: String,
 }
-
 #[derive(Clone, PartialEq, Debug, Deserialize, Serialize)]
 pub struct Buyer {
     pub adress: Adress,
@@ -19,7 +18,6 @@ pub struct Buyer {
     #[serde(rename = "vatNumber")]
     pub vat_number: String,
 }
-
 #[derive(Clone, PartialEq, Debug, Deserialize, Serialize)]
 pub struct Entity {
     pub adress: Adress,
@@ -27,7 +25,6 @@ pub struct Entity {
     #[serde(rename = "vatNumber")]
     pub vat_number: String,
 }
-
 #[derive(Clone, PartialEq, Debug, Deserialize, Serialize)]
 pub struct Entreprise {
     pub adress: Adress,
@@ -38,7 +35,6 @@ pub struct Entreprise {
     pub vat_number: String,
     pub website: String,
 }
-
 #[derive(Clone, PartialEq, Debug, Deserialize, Serialize)]
 pub struct Item {
     pub description: String,
@@ -48,9 +44,9 @@ pub struct Item {
     pub qt: f64,
     pub vat: String,
 }
-
 #[derive(Clone, PartialEq, Debug, Deserialize, Serialize)]
-pub struct InvoiceData {
+#[serde(rename = "InvoiceData.json")]
+pub struct InvoiceDataJson {
     #[serde(rename = "billNumber")]
     pub bill_number: f64,
     pub buyer: Buyer,
