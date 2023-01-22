@@ -9,11 +9,11 @@ pub struct AppProps {
     data: Option<InvoiceDataJson>,
 }
 
-pub async fn render_to_str(data: InvoiceDataJson) -> Result<String, Box<dyn std::error::Error>> {
+pub async fn render_to_str(data: InvoiceDataJson) -> String {
     let mut result = String::new();
     let renderer = yew::ServerRenderer::<App>::with_props(|| props!(AppProps { data: Some(data) }));
     renderer.render_to_string(&mut result).await;
-    Ok(result)
+    result
 }
 
 #[function_component(App)]

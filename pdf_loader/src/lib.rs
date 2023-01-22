@@ -16,8 +16,7 @@ pub async fn pdf_scrapper(url: &str) -> Result<Vec<u8>, Box<dyn std::error::Erro
         }
     });
     let page = browser.new_page(url).await?;
-    let params = PrintToPdfParams::default();
-    let pdf = page.pdf(params).await?;
+    let pdf = page.pdf(PrintToPdfParams::default()).await?;
     browser.close().await?;
     Ok(pdf)
 }
