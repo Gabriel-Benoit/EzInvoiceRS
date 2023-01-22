@@ -5,7 +5,7 @@ pub mod types;
 pub use types::*;
 
 #[derive(Properties, PartialEq, Default)]
-pub struct AppProps {
+struct AppProps {
     data: Option<InvoiceDataJson>,
 }
 
@@ -17,7 +17,7 @@ pub async fn render_to_str(data: InvoiceDataJson) -> String {
 }
 
 #[function_component(App)]
-pub fn app(props: &AppProps) -> Html {
+fn app(props: &AppProps) -> Html {
     let AppProps { data } = props;
     let InvoiceDataJson {
         buyer,
@@ -209,7 +209,7 @@ pub fn app(props: &AppProps) -> Html {
 }
 
 pub fn get_style_str() -> Result<String, Box<dyn std::error::Error>> {
-    let mut file = fs::File::open("./invoice_template/src/style.css")?;
+    let mut file = fs::File::open("./src/invoice_template/style.css")?;
     let mut buffer = String::new();
     buffer = buffer.add("<style>");
     file.read_to_string(&mut buffer)?;

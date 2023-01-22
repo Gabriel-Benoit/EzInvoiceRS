@@ -1,5 +1,9 @@
+use async_std;
 use base64::Engine;
 use std::{fs, io::Write, ops::Add};
+mod invoice_template;
+mod pdf_loader;
+
 #[async_std::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let data: invoice_template::InvoiceDataJson = get_mock_invoice().unwrap();
