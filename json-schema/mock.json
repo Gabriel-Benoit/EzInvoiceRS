@@ -1,5 +1,6 @@
 {
 	"items": [],
+	"billNumber": 0,
 	"buyer": {
 		"adress": {
 			"num": "",
@@ -22,12 +23,13 @@
 			"postCode": ""
 		},
 		"name": "",
-		"vatNumber": ""
+		"vatNumber": "",
+		"website": "it works"
 	},
 	"title": "",
 	"date": "",
 	"duration": 0,
-	"logoURL": "",
+	"logoURL": "coucou.com",
 	"duePercentage": 0,
 	"structuredCommunication": ""
 }

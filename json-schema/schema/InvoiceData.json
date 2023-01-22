@@ -1,7 +1,9 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
     "definitions": {
         "Adress": {
+            "additionalProperties": false,
             "properties": {
                 "city": {
                     "type": "string"
@@ -19,9 +21,19 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "city",
+                "num",
+                "postCode",
+                "street"
+            ],
             "type": "object"
         },
+        "Buyer": {
+            "$ref": "#/definitions/Entity"
+        },
         "Entity": {
+            "additionalProperties": false,
             "properties": {
                 "adress": {
                     "$ref": "#/definitions/Adress"
@@ -33,9 +45,15 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "adress",
+                "name",
+                "vatNumber"
+            ],
             "type": "object"
         },
         "Entreprise": {
+            "additionalProperties": false,
             "properties": {
                 "adress": {
                     "$ref": "#/definitions/Adress"
@@ -51,11 +69,23 @@
                 },
                 "vatNumber": {
                     "type": "string"
+                },
+                "website": {
+                    "type": "string"
                 }
             },
+            "required": [
+                "adress",
+                "email",
+                "name",
+                "phone",
+                "vatNumber",
+                "website"
+            ],
             "type": "object"
         },
         "Item": {
+            "additionalProperties": false,
             "properties": {
                 "description": {
                     "type": "string"
@@ -78,12 +108,22 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "description",
+                "intra",
+                "priceHT",
+                "qt",
+                "vat"
+            ],
             "type": "object"
         }
     },
     "properties": {
+        "billNumber": {
+            "type": "number"
+        },
         "buyer": {
-            "$ref": "#/definitions/Entity"
+            "$ref": "#/definitions/Buyer"
         },
         "date": {
             "type": "string"
@@ -113,6 +153,18 @@
             "type": "string"
         }
     },
+    "required": [
+        "billNumber",
+        "buyer",
+        "date",
+        "duePercentage",
+        "duration",
+        "entreprise",
+        "items",
+        "logoURL",
+        "structuredCommunication",
+        "title"
+    ],
     "type": "object"
 }
 

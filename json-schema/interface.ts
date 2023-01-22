@@ -8,6 +8,7 @@ interface InvoiceData {
 	logoURL: string;
 	duePercentage: number;
 	structuredCommunication: string;
+	billNumber: number;
 }
 
 interface Entity {
@@ -29,6 +30,7 @@ type Buyer = Entity;
 interface Entreprise extends Entity {
 	phone: string;
 	email: string;
+	website: string;
 }
 
 interface Item {
