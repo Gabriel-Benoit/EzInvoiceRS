@@ -5,6 +5,14 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[lib]
+name = "ez_invoice"
+path = "src/lib.rs"
+
+[[bin]]
+name = "ez_invoice_tests"
+path = "src/bin.rs"
+
 [dependencies]
 yew = {version = "0.20.0", features = ["ssr"]}
 schemafy = "0.6.0"

@@ -2,7 +2,7 @@ use std::{fs, io::Read, ops::Add};
 use yew::{prelude::*, props};
 
 pub mod types;
-pub use types::*;
+use types::*;
 
 #[derive(Properties, PartialEq, Default)]
 struct AppProps {
