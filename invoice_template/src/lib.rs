@@ -1,8 +1,9 @@
 use std::{fs, io::Read, ops::Add};
 use yew::{prelude::*, props};
-pub mod types;
 
+pub mod types;
 pub use types::*;
+
 #[derive(Properties, PartialEq, Default)]
 pub struct AppProps {
     data: Option<InvoiceDataJson>,
@@ -12,7 +13,6 @@ pub async fn render_to_str(data: InvoiceDataJson) -> Result<String, Box<dyn std:
     let mut result = String::new();
     let renderer = yew::ServerRenderer::<App>::with_props(|| props!(AppProps { data: Some(data) }));
     renderer.render_to_string(&mut result).await;
-
     Ok(result)
 }
 
@@ -209,10 +209,10 @@ pub fn app(props: &AppProps) -> Html {
 }
 
 pub fn get_style_str() -> Result<String, Box<dyn std::error::Error>> {
-    let mut file = fs::File::open("./invoice_template/src/style.css").unwrap();
+    let mut file = fs::File::open("./invoice_template/src/style.css")?;
     let mut buffer = String::new();
     buffer = buffer.add("<style>");
-    file.read_to_string(&mut buffer).unwrap();
+    file.read_to_string(&mut buffer)?;
     buffer = buffer.add("</style>");
     Ok(buffer)
 }
