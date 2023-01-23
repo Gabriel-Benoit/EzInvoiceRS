@@ -162,7 +162,7 @@ fn app(props: &AppProps) -> Html {
                                     <td><b>{"À payer"}</b></td>
                                     <td><b>{":"}</b></td>
                                     <td>
-                                    {format!("{:1.2}", items.iter().map(price).sum::<f64>() * due_percentage)}{"€"}
+                                    {format!("{:1.2}", items.iter().map(price).sum::<f64>() * due_percentage/100f64)}{"€"}
                                     </td>
                                 </tr>
                                 <tr>
