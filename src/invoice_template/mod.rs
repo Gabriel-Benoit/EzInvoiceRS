@@ -188,7 +188,7 @@ fn app(props: &AppProps) -> Html {
 
         <header>
             <div>
-
+                <img src={logo_url.as_str().to_owned()} />
             </div>
             <div id="invoice-header-info">
                 <h3>{title}</h3>
