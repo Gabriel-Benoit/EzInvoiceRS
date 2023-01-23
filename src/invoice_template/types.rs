@@ -48,9 +48,10 @@ pub struct Item {
 #[serde(rename = "InvoiceData.json")]
 pub struct InvoiceDataJson {
     #[serde(rename = "billNumber")]
-    pub bill_number: f64,
+    pub bill_number: String,
     pub buyer: Buyer,
     pub date: String,
+    pub deadline: String,
     #[serde(rename = "duePercentage")]
     pub due_percentage: f64,
     pub duration: f64,

@@ -4,11 +4,12 @@ interface InvoiceData {
 	entreprise: Entreprise;
 	title: string;
 	date: string;
+	deadline: string;
 	duration: number;
 	logoURL: string;
 	duePercentage: number;
 	structuredCommunication: string;
-	billNumber: number;
+	billNumber: string;
 }
 
 interface Entity {

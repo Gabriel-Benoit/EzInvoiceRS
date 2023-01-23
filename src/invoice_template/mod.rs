@@ -30,7 +30,25 @@ fn app(props: &AppProps) -> Html {
         structured_communication,
         title,
         bill_number,
+        deadline,
     } = data.as_ref().unwrap();
+
+    let Adress {
+        city: e_city,
+        num: e_num,
+        num_suffix: e_num_suffix,
+        post_code: e_post_code,
+        street: e_street,
+    } = &entreprise.adress;
+
+    let Adress {
+        city: b_city,
+        num: b_num,
+        num_suffix: b_num_suffix,
+        post_code: b_post_code,
+        street: b_street,
+    } = &buyer.adress;
+
     let intra = items.iter().any(|item| item.intra);
     let price = |item: &Item| {
         item.qt
@@ -62,20 +80,17 @@ fn app(props: &AppProps) -> Html {
                         <div id="invoice-from-to">
                             <div>
                                 <h3>{ entreprise.name.as_str() }</h3>
-                                <span>{"Entreprise ADRESS"}</span><br/>
+                                <span>{format!("{} {}{},", e_street, e_num, e_num_suffix.as_ref().unwrap_or(&String::default()) )}</span><br/>
+                                <span>{format!("{} {}", e_post_code, e_city)}</span><br/>
                                 <span>{ entreprise.phone.as_str() }</span><br/>
                                 <span>{ entreprise.email.as_str() }</span><br/>
                                 <span>{ entreprise.website.as_str() }</span>
                             </div>
                             <div>
-                                <h3>{ entreprise.name.as_str()}</h3>
-                                if entreprise.name != buyer.name  {
-                                <span>{ buyer.name.as_str() }</span><br />
-                                }
-                                <span>{"Client ADRESS"}</span><br />
-                                //if let Some(number) = buyer.vat_number {
-                                //<p>{format!("TVA : {:?} ", number)}</p>
-                                //}
+                                <h3>{ buyer.name.as_str()}</h3>
+                                <span>{format!("{} {}{},", b_street, b_num, b_num_suffix.as_ref().unwrap_or(&String::default()) )}</span><br/>
+                                <span>{format!("{} {}", b_post_code, b_city)}</span><br/>
+                                <p>{format!("TVA : {} ", buyer.vat_number)}</p>
                             </div>
                         </div>
 
@@ -177,16 +192,16 @@ fn app(props: &AppProps) -> Html {
             </div>
             <div id="invoice-header-info">
                 <h3>{title}</h3>
-                <span>{format!("Numéro de facture : {:1}", bill_number)}</span><br />
-                <span>{format!("Date d'émission : {:?}", date)}</span><br />
-                <span>{format!("Échéance : {:?}", duration)}</span>
+                <span>{format!("Numéro de facture : {}", bill_number)}</span><br />
+                <span>{format!("Date d'émission : {}", date)}</span><br />
+                <span>{format!("Échéance : {}", deadline)}</span>
             </div>
         </header>
         <footer>
             <div>
                 <h3>{entreprise.name.as_str()}</h3>
                 {"Entreprise ADRESS"}<br />
-                <span>{format!("TVA : {:?}", entreprise.vat_number.as_str())}</span>
+                <span>{format!("TVA : {}", entreprise.vat_number.as_str())}</span>
             </div>
 
             <div>

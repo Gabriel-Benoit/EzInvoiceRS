@@ -1,35 +1,51 @@
 {
-	"items": [],
-	"billNumber": 0,
+	"items": [
+		{
+			"description": "Clavier + backlight",
+			"intra": false,
+			"priceHT": 39.18,
+			"qt": 1,
+			"vat": "21"
+		},
+		{
+			"description": "Remplacement du clavier d'un macbook air (FVFXPYQ1J1WK) suite à des dommages occasionnés par un liquide + nettoyage à l'alcool isopropylique",
+			"intra": false,
+			"priceHT": 33.06,
+			"qt": 1,
+			"vat": "21"
+		}
+	],
+	"billNumber": "654169631",
 	"buyer": {
 		"adress": {
-			"num": "",
-			"numSuffix": "",
-			"city": "",
-			"street": "",
-			"postCode": ""
+			"num": "256",
+			"numSuffix": "B",
+			"city": "Tamplu",
+			"street": "Rue des écolos",
+			"postCode": "5600"
 		},
-		"name": "",
-		"vatNumber": ""
+		"name": "Carole Test",
+		"vatNumber": "Non-assujetti"
 	},
 	"entreprise": {
-		"phone": "",
-		"email": "",
+		"phone": "+32 123 456 789",
+		"email": "contact@test.com",
 		"adress": {
-			"num": "",
-			"numSuffix": "",
-			"city": "",
-			"street": "",
-			"postCode": ""
+			"num": "255",
+			"numSuffix": "A",
+			"city": "Tamplou",
+			"street": "Rue des écoles",
+			"postCode": "5620"
 		},
-		"name": "",
-		"vatNumber": "",
-		"website": "it works"
+		"name": "MyEnterprise",
+		"vatNumber": "BE0732788874",
+		"website": "test.com"
 	},
-	"title": "",
-	"date": "",
-	"duration": 0,
+	"title": "Invoice",
+	"date": "21/08/2022",
+	"duration": 30,
+	"deadline": "21/09/2022",
 	"logoURL": "coucou.com",
-	"duePercentage": 0,
-	"structuredCommunication": ""
+	"duePercentage": 100,
+	"structuredCommunication": "+++ 202 / 2000 / 60001 +++"
 }

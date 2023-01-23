@@ -120,12 +120,15 @@
     },
     "properties": {
         "billNumber": {
-            "type": "number"
+            "type": "string"
         },
         "buyer": {
             "$ref": "#/definitions/Buyer"
         },
         "date": {
+            "type": "string"
+        },
+        "deadline": {
             "type": "string"
         },
         "duePercentage": {
@@ -157,6 +160,7 @@
         "billNumber",
         "buyer",
         "date",
+        "deadline",
         "duePercentage",
         "duration",
         "entreprise",
