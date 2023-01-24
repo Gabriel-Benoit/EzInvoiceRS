@@ -58,6 +58,12 @@
                 "adress": {
                     "$ref": "#/definitions/Adress"
                 },
+                "bankAccount": {
+                    "type": "string"
+                },
+                "bankName": {
+                    "type": "string"
+                },
                 "email": {
                     "type": "string"
                 },
@@ -76,6 +82,8 @@
             },
             "required": [
                 "adress",
+                "bankAccount",
+                "bankName",
                 "email",
                 "name",
                 "phone",

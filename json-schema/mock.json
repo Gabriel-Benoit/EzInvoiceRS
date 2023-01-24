@@ -1,51 +1,53 @@
 {
-	"items": [
-		{
-			"description": "Clavier + backlight",
-			"intra": false,
-			"priceHT": 39.18,
-			"qt": 1,
-			"vat": "21"
-		},
-		{
-			"description": "Remplacement du clavier d'un macbook air (FVFXPYQ1J1WK) suite à des dommages occasionnés par un liquide + nettoyage à l'alcool isopropylique",
-			"intra": false,
-			"priceHT": 33.06,
-			"qt": 1,
-			"vat": "21"
-		}
-	],
-	"billNumber": "654169631",
-	"buyer": {
-		"adress": {
-			"num": "256",
-			"numSuffix": "B",
-			"city": "Tamplu",
-			"street": "Rue des écolos",
-			"postCode": "5600"
-		},
-		"name": "Carole Test",
-		"vatNumber": "Non-assujetti"
-	},
-	"entreprise": {
-		"phone": "+32 123 456 789",
-		"email": "contact@test.com",
-		"adress": {
-			"num": "255",
-			"numSuffix": "A",
-			"city": "Tamplou",
-			"street": "Rue des écoles",
-			"postCode": "5620"
-		},
-		"name": "MyEnterprise",
-		"vatNumber": "BE0732788874",
-		"website": "test.com"
-	},
-	"title": "Invoice",
-	"date": "21/08/2022",
-	"duration": 30,
-	"deadline": "21/09/2022",
-	"logoURL": "https://jlvnimport.com/images/sloir.svg",
-	"duePercentage": 100,
-	"structuredCommunication": "+++ 202 / 2000 / 60001 +++"
+    "items": [
+        {
+            "description": "Clavier + backlight",
+            "intra": false,
+            "priceHT": 39.18,
+            "qt": 1,
+            "vat": "21"
+        },
+        {
+            "description": "Remplacement du clavier d'un macbook air (FVFXPYQ1J1WK) suite à des dommages occasionnés par un liquide + nettoyage à l'alcool isopropylique",
+            "intra": false,
+            "priceHT": 33.06,
+            "qt": 1,
+            "vat": "21"
+        }
+    ],
+    "billNumber": "654169631",
+    "buyer": {
+        "adress": {
+            "num": "256",
+            "numSuffix": "B",
+            "city": "Tamplu",
+            "street": "Rue des écolos",
+            "postCode": "5600"
+        },
+        "name": "Carole Test",
+        "vatNumber": "Non-assujetti"
+    },
+    "entreprise": {
+        "phone": "+32 123 456 789",
+        "email": "contact@test.com",
+        "adress": {
+            "num": "255",
+            "numSuffix": "A",
+            "city": "Tamplou",
+            "street": "Rue des écoles",
+            "postCode": "5620"
+        },
+        "name": "MyEnterprise",
+        "vatNumber": "BE0732788874",
+        "website": "test.com",
+        "bankAccount": "BE11 0018 6889 4148",
+        "bankName": "BNP Paribas Fortis"
+    },
+    "title": "Invoice",
+    "date": "21/08/2022",
+    "duration": 30,
+    "deadline": "21/09/2022",
+    "logoURL": "https://jlvnimport.com/images/sloir.svg",
+    "duePercentage": 100,
+    "structuredCommunication": "+++ 202 / 2000 / 60001 +++"
 }

@@ -28,6 +28,10 @@ pub struct Entity {
 #[derive(Clone, PartialEq, Debug, Deserialize, Serialize)]
 pub struct Entreprise {
     pub adress: Adress,
+    #[serde(rename = "bankAccount")]
+    pub bank_account: String,
+    #[serde(rename = "bankName")]
+    pub bank_name: String,
     pub email: String,
     pub name: String,
     pub phone: String,

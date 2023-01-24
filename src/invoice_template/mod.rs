@@ -60,6 +60,14 @@ fn app(props: &AppProps) -> Html {
                 }))
     };
 
+    let total_vat = items.iter().fold(0_f64, |acc, item| {
+        if item.intra {
+            acc
+        } else {
+            acc + item.qt * item.price_ht * (item.vat.parse::<f64>().unwrap()) / 100_f64
+        }
+    });
+
     html!(
         <html>
             <head>
@@ -117,7 +125,7 @@ fn app(props: &AppProps) -> Html {
                                                 if item.intra {
                                                     <td>{"*"}</td>
                                                 } else {
-                                                    <td>{item.vat.as_str()}</td>
+                                                    <td>{format!("{}%",item.vat.as_str())}</td>
                                                 }
                                                 <td style="text-align: right">
                                                     {format!("{:1.2}", price(&item)) } {"€"}
@@ -135,7 +143,13 @@ fn app(props: &AppProps) -> Html {
                                         }).sum::<f64>())}{"€"}
                                     </td>
                                 </tr>
-
+                                <tr>
+                                    <td colspan="4" class="hidden"></td>
+                                    <td><b>{"Total TVA"}</b></td>
+                                    <td style="text-align: right">
+                                        {format!("{:1.2}", total_vat)}{"€"}
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td colspan="4" class="hidden"></td>
                                     <td><b>{"Total TTC"}</b></td>
@@ -200,22 +214,23 @@ fn app(props: &AppProps) -> Html {
         <footer>
             <div>
                 <h3>{entreprise.name.as_str()}</h3>
-                {"Entreprise ADRESS"}<br />
+                <span>{format!("{} {}{},", e_street, e_num, e_num_suffix.as_ref().unwrap_or(&String::default()) )}</span><br/>
+                <span>{format!("{} {}", e_post_code, e_city)}</span><br/>
                 <span>{format!("TVA : {}", entreprise.vat_number.as_str())}</span>
             </div>
 
             <div>
                 <h3>{"Contact"}</h3>
-                <span>{"Simon Loir"}</span><br />
-                <span>{"+32 485 45 26 98"}</span><br />
-                <span>{"contact@simonloir.be"}</span>
+                <span>{ entreprise.name.as_str() }</span><br />
+                <span>{ entreprise.phone.as_str() }</span><br />
+                <span>{ entreprise.email.as_str() }</span>
             </div>
 
             <div>
                 <h3>{"Moyen de payement"}</h3>
-                <span>{"Simon Loir"}</span><br />
-                <span>{"IBAN : BE11 0018 6889 4148"}</span><br />
-                <span>{"Banque : BNP Paribas Fortis"}</span>
+                <span>{ entreprise.name.as_str() }</span><br />
+                <span>{ format!("IBAN : {}", entreprise.bank_account.as_str()) }</span><br />
+                <span>{ format!("Banque : {}", entreprise.bank_name.as_str()) }</span>
             </div>
         </footer>
             </body>
