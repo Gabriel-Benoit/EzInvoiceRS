@@ -9,9 +9,11 @@ struct AppProps {
     data: Option<InvoiceDataJson>,
 }
 
-pub async fn render_to_str(data: InvoiceDataJson) -> String {
+pub async fn render_to_str(data: &InvoiceDataJson) -> String {
     let mut result = String::new();
-    let renderer = yew::ServerRenderer::<App>::with_props(|| props!(AppProps { data: Some(data) }));
+    let clone = data.clone();
+    let renderer =
+        yew::ServerRenderer::<App>::with_props(|| props!(AppProps { data: Some(clone) }));
     renderer.render_to_string(&mut result).await;
     result
 }
@@ -128,7 +130,7 @@ fn app(props: &AppProps) -> Html {
                                                     <td>{format!("{}%",item.vat.as_str())}</td>
                                                 }
                                                 <td style="text-align: right">
-                                                    {format!("{:1.2}", price(&item)) } {"€"}
+                                                    {format!("{:1.2}", price(item)) } {"€"}
                                                 </td>
                                             </tr>
                                         }
