@@ -1,0 +1,14 @@
+
+# Carog / Rust
+/target
+/dist
+
+# TS / npm
+/node_modules
+package-lock.json
+
+# Others
+*.pdf
+
+
+

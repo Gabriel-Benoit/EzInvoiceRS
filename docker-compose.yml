@@ -1,0 +1,10 @@
+
+version: '3.9'
+
+services:
+  rocket:
+    build: .
+    command: rustup run nightly cargo run --release
+    ports:
+      - 8080:8080
+    
