@@ -26,11 +26,12 @@ RUN groupadd --system app && \
 
 USER app
 
+# Install Rust & setup
 RUN curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly -y 
-
 ENV PATH=/home/app/.cargo/bin:$PATH
 RUN rustup default nightly
 
+# Build app
 WORKDIR /app
 
 COPY Cargo.toml Cargo.lock  ./
