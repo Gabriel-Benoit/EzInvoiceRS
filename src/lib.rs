@@ -2,10 +2,11 @@ pub mod invoice_template;
 pub use invoice_template::types::*;
 pub mod pdf_loader;
 use invoice_template::{get_style_str, render_to_str};
+use pdf_loader::init_chrome_instance;
 pub use pdf_loader::server::rocket;
 
 use base64::Engine;
-use std::ops::Add;
+use std::{fs, io::Write, ops::Add};
 
 /// Generates an invoice as a PDF file in a vector of bytes with respect to the given invoice data
 pub async fn generate_invoice(
@@ -46,4 +47,29 @@ async fn generate_url(data: &InvoiceDataJson) -> String {
     // Creating data URL
     let url = "data:text/html;base64,".to_owned() + encoded.as_str();
     url
+}
+
+/// Retrieves an invoice from a JSON file
+pub fn get_mock_invoice(path: &str) -> Result<InvoiceDataJson, Box<dyn std::error::Error>> {
+    let file = fs::read_to_string(path)?;
+    let data: InvoiceDataJson = serde_json::from_str(file.as_str())?;
+    Ok(data)
+}
+
+/// Writes a PDF file to the given path
+pub fn write_pdf_to_file(
+    pdf: Vec<u8>,
+    path: Option<&str>,
+) -> Result<(), Box<dyn std::error::Error>> {
+    let path = path.unwrap_or("./invoice.pdf");
+    let mut file = fs::File::create(path)?;
+    file.write_all(&pdf)?;
+    Ok(())
+}
+
+/// Starts the server that will be used to generate invoices as a service
+pub async fn start_server() -> Result<(), Box<dyn std::error::Error>> {
+    init_chrome_instance().await;
+    rocket().ignite().await.unwrap().launch().await.ok();
+    Ok(())
 }

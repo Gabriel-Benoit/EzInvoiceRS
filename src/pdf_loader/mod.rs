@@ -6,7 +6,7 @@ use chromiumoxide::{
 };
 use once_cell::sync::Lazy;
 pub use server::rocket;
-use tokio::sync::{Mutex, MutexGuard};
+use tokio::sync::Mutex;
 
 const PRINT_CONFIG: PrintToPdfParams = PrintToPdfParams {
     landscape: None,
@@ -27,25 +27,18 @@ const PRINT_CONFIG: PrintToPdfParams = PrintToPdfParams {
     transfer_mode: None,
 };
 
-static mut CHROME_INSTANCE: Lazy<Mutex<Option<ChromeInstance>>> = Lazy::new(|| {
-    async_std::task::block_on(async {
-        let chr = Some(ChromeInstance::new().await);
-        Mutex::new(chr)
-    })
-});
-
-async fn get_chrome_instance() -> MutexGuard<'static, Option<ChromeInstance>> {
-    unsafe {
-        let mut guard = CHROME_INSTANCE.lock().await;
-        if guard.is_none() {
-            *guard = Some(ChromeInstance::new().await);
-        }
-        guard
-    }
-}
+static CHROME_INSTANCE: Lazy<Mutex<ChromeInstance>> =
+    Lazy::new(|| async_std::task::block_on(async { Mutex::new(ChromeInstance::new().await) }));
 
 pub struct ChromeInstance {
     pub browser: Browser,
+}
+
+/// Initializes a static chrome instance to be used by the server,
+/// otherwise the lazy evaluation will be applied when the first request is made.
+#[allow(unused_must_use)]
+pub async fn init_chrome_instance() {
+    CHROME_INSTANCE.lock().await;
 }
 
 impl ChromeInstance {
@@ -70,8 +63,7 @@ impl ChromeInstance {
 /// Generates a PDF file in a vector of bytes using a static headless chrome instance with respect to the given url
 pub async fn static_pdf_scrapper(url: &str) -> Result<Vec<u8>, Box<dyn std::error::Error>> {
     // Acquire chrome instance lock
-    let mut chrome_guard = get_chrome_instance().await;
-    let chrome = chrome_guard.as_mut().unwrap();
+    let chrome = CHROME_INSTANCE.lock().await;
 
     // Print procedure
     let page = chrome.browser.new_page(url).await?;
