@@ -2,6 +2,6 @@
 address = "0.0.0.0"
 port = 8080
 workers = 2
-log_level = "debug"
-secret_key = "secret"
+log_level = "normal"
+secret_key = "2bb80d537b1da3e38bd30361aa855686bde0eacd7162fef6a25fe97bf527a25b"
 limits = { forms = 32768 }
