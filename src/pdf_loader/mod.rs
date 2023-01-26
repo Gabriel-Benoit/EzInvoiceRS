@@ -50,9 +50,10 @@ pub struct ChromeInstance {
 
 impl ChromeInstance {
     pub async fn new() -> Self {
-        let (browser, mut handler) = Browser::launch(BrowserConfig::builder().build().unwrap())
-            .await
-            .unwrap();
+        let (browser, mut handler) =
+            Browser::launch(BrowserConfig::builder().no_sandbox().build().unwrap())
+                .await
+                .unwrap_or_else(|e| panic!("Failed to launch browser: {:?}", e));
         let _handle = async_std::task::spawn(async move {
             let mut finish = false;
             while !finish {
